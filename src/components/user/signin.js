@@ -1,8 +1,49 @@
 import React from 'react'
+import axios from 'axios'
+import config from'../../../config/config'
+var api = config.api.root
 
 class signin extends React.Component{
     constructor(props){
         super(props)
+        this.state ={
+            email: null,
+            password: null
+        }
+    }
+
+    handleChange = (event) => {
+        const target = event.target;
+        var partialState = {};
+        partialState[target.name] = target.value;
+        this.setState(partialState);
+    }
+
+    signIn = (event)=>{
+        event.preventDefault()
+        var data = {
+            email: this.state.email,
+            password: this.state.password
+        }
+        console.log(data)
+        axios.post(api+'/api/signIn',data)
+       .then((response)=>{
+            console.log(response.data)
+            if(response.data){
+                window.localStorage.setItem("userName", response.data.name);
+                window.localStorage.setItem("userId", response.data._id);
+                alert("successfully login")
+                alert(response.data.name)
+
+            }else{
+                alert("please signup")
+
+            }
+            // this.setState({user: response.data})
+        })
+       .catch((error)=>{
+        console.log("error",error)
+       })
     }
 
     render(){
@@ -12,24 +53,19 @@ class signin extends React.Component{
                     <div className="col-md-4 col-md-offset-4">
                         <h1>Login</h1><br/>
                         
-                            <div className="alert alert-danger">
-                                
-                            </div>
-                        
-                        <form action="/user/signin" method="post">
+                        <form>
                             <div className="form-group">
                                 <label for="email">E-Mail</label>
-                                <input type="text" id="email" name="email" className="form-control"/>
+                                <input type="text" id="email" name="email" onChange={this.handleChange} value={this.state.email} className="form-control"/>
                             </div>
                             <div className="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" id="password" name="password" className="form-control"/>
+                                <input type="password" id="password" name="password" onChange={this.handleChange} value={this.state.password} className="form-control"/>
                             </div>
-                            <input type="hidden" name="_csrf" value=""/>
-                            <button type="submit" className="btn btn-primary">Enter</button>
+                            <button type="submit" onClick={this.signIn} className="btn btn-primary">Enter</button>
                         </form>
                         <br/>
-                        <p>Not yet Registered? <a href="/user/signup">Click here !</a></p>
+                        <p>Not yet Registered? <a href="/signup">Click here !</a></p>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,23 @@
 import React from 'react'
+import axios from 'axios'
 
 class Header extends React.Component{
     constructor(props){
         super(props)
+        this.state ={
+            userSignIn: []
+        }
     }
 
+    componentWillMount(){
+        this.userSignIn()
+    }
+
+    userSignIn = ()=>{
+        axios.get(window.localStorage)
+        console.log(window.localStorage)
+       
+    }
     render(){
         return (
         	<div>
@@ -30,18 +43,18 @@ class Header extends React.Component{
                                 </li>
                                 <li className="dropdown">
                                    
-                                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>  <span class="caret"></span></a>
-                                        <ul className="dropdown-menu">
-                                            <li><a href="/profile"> Profile</a></li>
-                                            <li role="separator" className="divider"></li>
-                                            <li><a href="/logout">LogOut</a></li>
-                                        </ul>
-                                    
-                                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> User Profile<span class="caret"></span></a>
-                                        <ul className="dropdown-menu">
-                                            <li><a href="/signup">SignUp</a></li>
-                                            <li><a href="/signin">SignIn</a></li>
-                                        </ul>
+                                    <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>  <span class="caret"></span></a>
+                                    <ul className="dropdown-menu">
+                                        <li><a href="/profile"> Profile</a></li>
+                                        <li role="separator" className="divider"></li>
+                                        <li><a href="/logout">LogOut</a></li>
+                                    </ul>
+                                
+                                    <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> User Profile<span class="caret"></span></a>
+                                    <ul className="dropdown-menu">
+                                        <li><a href="/signup">SignUp</a></li>
+                                        <li><a href="/signin">SignIn</a></li>
+                                    </ul>
                                     
                                 </li>
                             </ul>
