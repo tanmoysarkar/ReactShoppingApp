@@ -27,7 +27,6 @@ api.post('/user', function(req, res){
 api.post('/signIn', function(req, res){
 	user.findOne(req.body,function(err, response){
 
-		console.log("hiiii")
 		console.log(response)
 		if (err) {
         	return callback(err)
@@ -37,5 +36,20 @@ api.post('/signIn', function(req, res){
 		
 	})
 })
+
+api.post('/addToCart', function(req, res){
+
+	product.findOne(req.body, function(err, response){
+		console.log(response)
+		if (err){
+			return callback(err)
+		}else{
+			res.json(response)
+			
+		}
+	})
+})
+
+
 
 module.exports = api;

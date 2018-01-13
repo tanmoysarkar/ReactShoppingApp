@@ -7,7 +7,8 @@ class Home extends React.Component{
     constructor(props){
         super(props)
         this.state ={
-            product: []
+            product: [],
+            productId: null
         }
     }
 
@@ -15,11 +16,45 @@ class Home extends React.Component{
         this.product()
     }
 
+    handleChange = (event) => {
+        const target = event.target;
+        var partialState = {};
+        partialState[target.name] = target.value;
+        this.setState(partialState);
+    }
+
     product = ()=>{
         axios.get(api+'/api/product')
        .then((response)=>{
             console.log(response.data)
             this.setState({product: response.data})
+        })
+       .catch((error)=>{
+        console.log("error",error)
+       })
+    }
+
+    cartAdded = (event,values)=>{
+        // console.log(values)
+
+        // console.log(event.target.id)
+        var data = {
+            _id: event.target.id
+        }
+        console.log(data)
+
+        axios.post(api+'/api/addToCart',data)
+       .then((response)=>{
+            if(localStorage.getItem("data")){
+                let data = JSON.parse(localStorage.getItem("data"))
+                data.push(response.data)
+                localStorage.setItem("data", JSON.stringify(data));
+            } else {
+                localStorage.setItem("data", JSON.stringify([response.data]));
+            }
+            console.log(localStorage.getItem("data"))
+            alert("Successfully Added")
+            // window.location.href = '/signin'
         })
        .catch((error)=>{
         console.log("error",error)
@@ -41,7 +76,8 @@ class Home extends React.Component{
                                             <div className="count pull-right">{this.state.product[i].count} in Stock</div>
                                         </div><br/><br/>
                                         <div className="clearfix">
-                                            <a href="/add-to-cart/" className="btn btn-success pull-right" role="button">Add to cart</a>
+                                            <input type="hidden" className="productId" name="productId" value={this.state.product[i]._id}/>
+                                            <a onClick={this.cartAdded} id={this.state.product[i]._id} className="btn btn-success pull-right" role="button">Add to cart</a>
                                         </div>
                                     </div>
                                 </div>
@@ -51,13 +87,6 @@ class Home extends React.Component{
         
         return (
             <div>
-                <div className="row">
-                    <div className="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
-                        <div id="success" className="alert alert-success" >
-                            
-                        </div>
-                    </div>
-                </div>
                 {cart}
             </div>
         )

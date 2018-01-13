@@ -32,7 +32,8 @@ class signup extends React.Component{
         axios.post(api+'/api/user',data)
        .then((response)=>{
             console.log(response.data)
-            // this.setState({user: response.data})
+            alert("Successfully Signup")
+            window.location.href = '/signin'
         })
        .catch((error)=>{
         console.log("error",error)

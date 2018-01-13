@@ -25,21 +25,19 @@ class signin extends React.Component{
             email: this.state.email,
             password: this.state.password
         }
-        console.log(data)
+
         axios.post(api+'/api/signIn',data)
        .then((response)=>{
             console.log(response.data)
             if(response.data){
                 window.localStorage.setItem("userName", response.data.name);
                 window.localStorage.setItem("userId", response.data._id);
+                window.localStorage.setItem("userEmail", response.data.email);
                 alert("successfully login")
-                alert(response.data.name)
-
+                window.location.href = '/'
             }else{
                 alert("please signup")
-
             }
-            // this.setState({user: response.data})
         })
        .catch((error)=>{
         console.log("error",error)
