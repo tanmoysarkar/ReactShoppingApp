@@ -26,6 +26,7 @@
     "express-session": "^1.15.6",
     "express-validator": "^4.3.0",
     "file-loader": "^1.1.6",
+    "file-type": "^7.4.0",
     "font-awesome": "^4.7.0",
     "mongoose": "^4.13.9",
     "morgan": "^1.9.0",
