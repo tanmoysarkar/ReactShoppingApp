@@ -2,7 +2,7 @@
   "name": "website",
   "version": "1.0.0",
   "engines": {
-    "node": "9.4.0"
+    "node": "7.2.1"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -28,7 +28,6 @@
     "file-loader": "^1.1.6",
     "mongoose": "^4.13.9",
     "morgan": "^1.9.0",
-    "node": "^9.4.0",
     "nodemon": "^1.14.7",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
