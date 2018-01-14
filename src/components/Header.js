@@ -16,16 +16,17 @@ class Header extends React.Component{
     }
 
     render(){
+        const itemAdded = localStorage
         const isLoggedIn = window.localStorage.userName
         const userLoginIn = <ul className="dropdown-menu">
-                                            <li><a href="/profile"> Profile</a></li>
-                                            <li role="separator" className="divider"></li>
-                                            <li><a onClick={this.logoutSession}>LogOut</a></li>
-                                        </ul>
+                                <li><a href="/profile"> Profile</a></li>
+                                <li role="separator" className="divider"></li>
+                                <li><a onClick={this.logoutSession}>LogOut</a></li>
+                            </ul>
         const userNotLogin = <ul className="dropdown-menu">
-                                        <li><a href="/signup">SignUp</a></li>
-                                        <li><a href="/signin">SignIn</a></li>
-                                        </ul>
+                                <li><a href="/signup">SignUp</a></li>
+                                <li><a href="/signin">SignIn</a></li>
+                            </ul>
         return (
         	<div>
 	            <nav className="navbar navbar-default">
@@ -43,10 +44,19 @@ class Header extends React.Component{
                         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul className="nav navbar-nav navbar-right">
                                 <li>
-                                    <a href="/shopping-cart">
-                                        <i className="fa fa-shopping-cart" aria-hidden="true"></i> Shopping cart
-                                        <span className="badge"></span>
-                                    </a>
+                                    {
+                                        itemAdded ? <div>
+                                            <a href="/shopping-cart">
+                                                <i className="fa fa-shopping-cart" aria-hidden="true"></i> Your cart
+                                                <span className="badge"></span>
+                                            </a>
+                                        </div> : <div>
+                                            <a href="/signin">
+                                                <i className="fa fa-shopping-cart" aria-hidden="true"></i> Login to view your cart
+                                                <span className="badge"></span>
+                                            </a>
+                                        </div>
+                                    }
                                 </li>
                                 <li className="dropdown">
                                     {

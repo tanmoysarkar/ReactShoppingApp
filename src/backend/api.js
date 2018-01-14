@@ -11,7 +11,6 @@ api.get('/product', function(req, res){
 
 	product.find(function(err, result){
 		if(err) throw err;
-		// console.log(result)
 		res.json(result)
 	})
 })
@@ -19,15 +18,12 @@ api.get('/product', function(req, res){
 api.post('/user', function(req, res){
 	user.create(req.body,function(err, response){
 		if(err) throw err;
-		// console.log(response)
 		res.json(response)
 	})
 })
 
 api.post('/signIn', function(req, res){
 	user.findOne(req.body,function(err, response){
-
-		console.log(response)
 		if (err) {
         	return callback(err)
 	    }else {
@@ -40,15 +36,17 @@ api.post('/signIn', function(req, res){
 api.post('/addToCart', function(req, res){
 
 	product.findOne(req.body, function(err, response){
-		console.log(response)
 		if (err){
 			return callback(err)
 		}else{
 			res.json(response)
-			
 		}
 	})
 })
+
+// api.post('/removeItem', function(req, res){
+	
+// })
 
 
 

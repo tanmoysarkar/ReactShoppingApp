@@ -16,6 +16,8 @@ class Home extends React.Component{
         this.product()
     }
 
+    
+
     handleChange = (event) => {
         const target = event.target;
         var partialState = {};
@@ -35,14 +37,9 @@ class Home extends React.Component{
     }
 
     cartAdded = (event,values)=>{
-        // console.log(values)
-
-        // console.log(event.target.id)
         var data = {
             _id: event.target.id
         }
-        console.log(data)
-
         axios.post(api+'/api/addToCart',data)
        .then((response)=>{
             if(localStorage.getItem("data")){
@@ -54,7 +51,6 @@ class Home extends React.Component{
             }
             console.log(localStorage.getItem("data"))
             alert("Successfully Added")
-            // window.location.href = '/signin'
         })
        .catch((error)=>{
         console.log("error",error)

@@ -15,6 +15,10 @@ body {
     color: #7f7f7f;
 }
 
+.removeItem{
+  cursor: pointer;
+}
+
 .cartItems{
   width: 30px;
   height: 50px;
