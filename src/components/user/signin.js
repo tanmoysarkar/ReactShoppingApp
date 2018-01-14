@@ -33,10 +33,10 @@ class signin extends React.Component{
                 window.localStorage.setItem("userName", response.data.name);
                 window.localStorage.setItem("userId", response.data._id);
                 window.localStorage.setItem("userEmail", response.data.email);
-                alert("successfully login")
+                alert("Successfully login")
                 window.location.href = '/'
             }else{
-                alert("please signup")
+                alert("Email / Password not found . Please signup to continue.")
             }
         })
        .catch((error)=>{
@@ -47,24 +47,22 @@ class signin extends React.Component{
     render(){
         return (
         	<div>
-            	<div className="row">
-                    <div className="col-md-4 col-md-offset-4">
-                        <h1>Login</h1><br/>
-                        
-                        <form>
-                            <div className="form-group">
-                                <label for="email">E-Mail</label>
-                                <input type="text" id="email" name="email" onChange={this.handleChange} value={this.state.email} className="form-control"/>
-                            </div>
-                            <div className="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" id="password" name="password" onChange={this.handleChange} value={this.state.password} className="form-control"/>
-                            </div>
-                            <button type="submit" onClick={this.signIn} className="btn btn-primary">Enter</button>
-                        </form>
-                        <br/>
-                        <p>Not yet Registered? <a href="/signup">Click here !</a></p>
-                    </div>
+                <div className="col-md-4 col-md-offset-4">
+                    <h1>Login</h1><br/>
+                    
+                    <form>
+                        <div className="form-group">
+                            <label for="email">E-Mail</label>
+                            <input type="text" id="email" name="email" onChange={this.handleChange} value={this.state.email} className="form-control"/>
+                        </div>
+                        <div className="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" onChange={this.handleChange} value={this.state.password} className="form-control"/>
+                        </div>
+                        <button type="submit" onClick={this.signIn} className="btn btn-primary">Enter</button>
+                    </form>
+                    <br/>
+                    <p>Not yet Registered? <a href="/signup">Click here !</a></p>
                 </div>
             </div>
         )

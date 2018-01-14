@@ -42,11 +42,11 @@ class Header extends React.Component{
                         </div>
 
                         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul className="nav navbar-nav navbar-right">
+                            <ul className="nav navbar-nav navbar-right header-items">
                                 <li>
                                     {
                                         itemAdded ? <div>
-                                            <a href="/shopping-cart">
+                                            <a href="/shopping-cart" className="your-cart">
                                                 <i className="fa fa-shopping-cart" aria-hidden="true"></i> Your cart
                                                 <span className="badge"></span>
                                             </a>

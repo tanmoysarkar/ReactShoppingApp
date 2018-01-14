@@ -6,6 +6,7 @@ mongoose.connect(url)
 
 var product = require('./models/product')
 var user = require('./models/user')
+var cart = require('./models/cart')
 
 api.get('/product', function(req, res){
 
@@ -44,10 +45,11 @@ api.post('/addToCart', function(req, res){
 	})
 })
 
-// api.post('/removeItem', function(req, res){
-	
-// })
-
-
+api.post('/cartCheckout', function(req, res){
+	cart.create(req.body,function(err, response){
+		if(err) throw err;
+		res.json(response)
+	})
+})
 
 module.exports = api;

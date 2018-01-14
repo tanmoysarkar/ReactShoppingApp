@@ -38,3 +38,12 @@ body {
 .checkout-item{
   float: right;
 }
+.your-cart{
+  margin-right: 15px
+}
+.header-items{
+  top: 20px;
+  margin-top: 15px !important;
+  margin-right: 0px !important;
+
+}

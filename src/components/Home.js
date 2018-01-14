@@ -60,25 +60,24 @@ class Home extends React.Component{
     render(){
         let cart =[]
         for (var i = 0; i < this.state.product.length; i++) {
-            cart[i] =   <div className="row">
-                            <div className="col-sm-6 col-md-4">
-                                <div className="thumbnail">
-                                    <img src={this.state.product[i].imagePath} alt="..." className="img-responsive"/>
-                                    <div className="caption">
-                                        <h3>{this.state.product[i].name}</h3>
-                                        <p className="description">{this.state.product[i].description}</p>
-                                        <div className="col-xs-12">
-                                            <div className="price pull-left">₹ {this.state.product[i].price}</div>
-                                            <div className="count pull-right">{this.state.product[i].count} in Stock</div>
-                                        </div><br/><br/>
-                                        <div className="clearfix">
-                                            <input type="hidden" className="productId" name="productId" value={this.state.product[i]._id}/>
-                                            <a onClick={this.cartAdded} id={this.state.product[i]._id} className="btn btn-success pull-right" role="button">Add to cart</a>
-                                        </div>
+            cart[i] =   <div className="col-sm-4 col-xs-12" >
+                            <div className="thumbnail">
+                                <img src={this.state.product[i].imagePath} alt="..." className="img-responsive" style={{height:"200px"}}/>
+                                <div className="caption">
+                                    <h3>{this.state.product[i].name}</h3>
+                                    <p className="description">{this.state.product[i].description}</p>
+                                    <div className="col-xs-12">
+                                        <div className="price pull-left">₹ {this.state.product[i].price}</div>
+                                        <div className="count pull-right">{this.state.product[i].count} in Stock</div>
+                                    </div><br/><br/>
+                                    <div className="clearfix">
+                                        <input type="hidden" className="productId" name="productId" value={this.state.product[i]._id}/>
+                                        <a onClick={this.cartAdded} id={this.state.product[i]._id} className="btn btn-success pull-right" role="button">Add to cart</a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>   
+                       
         }
         
         return (

@@ -43,32 +43,28 @@ class signup extends React.Component{
     render(){
         return (
         	<div>
-            	<div className="row">
-                    <div className="col-md-4 col-md-offset-4">
-                        <h1>User Registration</h1><br/>
-                            <div className="alert alert-danger">  
-                            </div>
-                        <form>
-                            <div className="form-group">
-                                <label for="name">User Name</label>
-                                <input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} className="form-control"/>
-                            </div>
+                <div className="col-md-4 col-md-offset-4">
+                    <h1>User Registration</h1><br/>
+                    <form>
+                        <div className="form-group">
+                            <label for="name">User Name</label>
+                            <input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} className="form-control"/>
+                        </div>
 
-                            <div className="form-group">
-                                <label for="email">E-Mail</label>
-                                <input type="text" id="email" name="email" onChange={this.handleChange} value={this.state.email} className="form-control"/>
-                            </div>
+                        <div className="form-group">
+                            <label for="email">E-Mail</label>
+                            <input type="text" id="email" name="email" onChange={this.handleChange} value={this.state.email} className="form-control"/>
+                        </div>
 
-                            <div className="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" id="password" name="password" onChange={this.handleChange} value={this.state.password} className="form-control"/>
-                            </div>
+                        <div className="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" onChange={this.handleChange} value={this.state.password} className="form-control"/>
+                        </div>
+                    
+                        <br/>
                         
-                            <br/>
-                            
-                            <button onClick={this.signUp} className="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
+                        <button onClick={this.signUp} className="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         )
