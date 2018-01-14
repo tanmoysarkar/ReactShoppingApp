@@ -39,12 +39,8 @@ module.exports = {
           use: "url-loader"
         },
         {
-          test: /\.(ttf|eot|svg|jpg|png)(\?[\s\S]+)?$/,
+          test: /\.(jpe|jpg|woff|woff2|eot|ttf|svg|png)(\?.*$|$)/,
           use: 'file-loader'
-        },
-        {
-          test: /\.(ttf|eot|svg|jpg|png)(\?[\s\S]+)?$/,
-          use: 'file-type'
         }
     ],
     
