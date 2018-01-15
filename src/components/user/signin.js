@@ -47,7 +47,7 @@ class signin extends React.Component{
     render(){
         return (
         	<div>
-                <div className="col-md-4 col-md-offset-4">
+                <div className="col-md-4 col-md-offset-4 background-color-signin">
                     <h1>Login</h1><br/>
                     
                     <form>

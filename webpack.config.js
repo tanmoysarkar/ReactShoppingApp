@@ -25,7 +25,11 @@ module.exports = {
           }
        },
        {     test: /\.css$/,
-              loader:'style!css!url'
+            loaders: [
+                        
+                    'style-loader', 
+                    'css-loader',        
+                    ]
 
         },
        {
@@ -39,11 +43,8 @@ module.exports = {
           use: "url-loader"
         },
         {
-          test: /\.(jpe|jpg|woff|woff2|eot|ttf|svg|png)(\?.*$|$)/,
+          test: /\.(ttf|eot|svg|jpg|png)(\?[\s\S]+)?$/,
           use: 'file-loader'
-        },
-        { test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/
-          , loader: 'url?limit=100000&name=[name].[ext]'
         }
     ],
     

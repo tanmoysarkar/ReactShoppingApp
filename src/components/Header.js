@@ -16,7 +16,7 @@ class Header extends React.Component{
     }
 
     render(){
-        const itemAdded = localStorage
+        const itemAdded = localStorage.getItem("data")
         const isLoggedIn = window.localStorage.userName
         const userLoginIn = <ul className="dropdown-menu">
                                 <li><a href="/profile"> Profile</a></li>
@@ -45,13 +45,19 @@ class Header extends React.Component{
                             <ul className="nav navbar-nav navbar-right header-items">
                                 <li>
                                     {
-                                        itemAdded ? <div>
+                                        (isLoggedIn) ? <div>
                                             <a href="/shopping-cart" className="your-cart">
                                                 <i className="fa fa-shopping-cart" aria-hidden="true"></i> Your cart
                                                 <span className="badge"></span>
                                             </a>
-                                        </div> : <div>
-                                            <a href="/signin">
+                                        </div> :(itemAdded) ? <div>
+                                            <a href="/signin" className="loginToView">
+                                                <i className="fa fa-shopping-cart" aria-hidden="true"></i> Login to view your cart
+                                                <span className="badge"></span>
+                                            </a>
+                                        </div>
+                                        : <div>
+                                            <a href="/signin" className="loginToView">
                                                 <i className="fa fa-shopping-cart" aria-hidden="true"></i> Login to view your cart
                                                 <span className="badge"></span>
                                             </a>

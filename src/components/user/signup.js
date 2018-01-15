@@ -43,7 +43,7 @@ class signup extends React.Component{
     render(){
         return (
         	<div>
-                <div className="col-md-4 col-md-offset-4">
+                <div className="col-md-4 col-md-offset-4 background-color-signup">
                     <h1>User Registration</h1><br/>
                     <form>
                         <div className="form-group">

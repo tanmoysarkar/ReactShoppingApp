@@ -29,7 +29,7 @@ class Shoppingcart extends React.Component{
      
 
     render(){
-        const itemAdded = localStorage
+        const itemAdded = this.state.data
         const isLoggedIn = window.localStorage.userName
         let noCartAdded =   <div className="row">
                                 <div className="col-xs-6 col-sm-offset-3">
@@ -61,23 +61,27 @@ class Shoppingcart extends React.Component{
 
         let cartTotalPrice =[]
         var sum = 0
-        for (var i = 0; i < this.state.data.length; i++) {
-            sum += parseInt(this.state.data[i].price); //also didn't work
-        }
-         let totalCart = <div className="row">
-                            <div className="col-xs-6 col-sm-offset-3">
-                                <strong>Total:₹{sum} </strong>
+        let totalCart = null
+        if(this.state.data){
+            for (var i = 0; i < this.state.data.length; i++) {
+                sum += parseInt(this.state.data[i].price); //also didn't work
+            }
+        
+             totalCart = <div className="row">
+                                <div className="col-xs-6 col-sm-offset-3">
+                                    <strong>Total:₹{sum} </strong>
+                                </div>
                             </div>
-                        </div>
-        var items = []
-        this.state.data.map(item=>{
-            console.log(item)
-            items.push(
-                <Item 
-                item={item}
-                removeItem={this.removeItem}/>
-            );
-        })
+            var items = []
+            this.state.data.map(item=>{
+                console.log(item)
+                items.push(
+                    <Item 
+                    item={item}
+                    removeItem={this.removeItem}/>
+                );
+            })
+        }
         return (
             <div>
                 {
